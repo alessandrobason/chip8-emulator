@@ -1,0 +1,16 @@
+SOURCES := $(wildcard src/*.c)
+LIBS := $(wildcard third_party/sokol/*.c)
+
+ALL_SRCS := $(SOURCES) $(LIBS)
+
+INCLUDES := third_party roms
+INCLUDES := $(foreach dir,$(INCLUDES),-I$(dir))
+
+OPTIONS := -O3 -DNDEBUG
+
+TEMPLATE := minimal.html
+
+BUILD_DIR := web_build
+
+all:
+	emcc $(ALL_SRCS) $(OPTIONS) $(INCLUDES) --shell-file $(BUILD_DIR)/$(TEMPLATE) -s USE_WEBGL2=1 -s WASM=1 -DSOKOL_GLES3 -o $(BUILD_DIR)/chip8.html

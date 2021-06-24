@@ -1,0 +1,9 @@
+#
+# chip8
+#
+---
+imports:
+    fips-utils:
+        git: https://github.com/fips-libs/fips-utils
+    sokol:
+        git: https://github.com/floooh/sokol
